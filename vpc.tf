@@ -43,3 +43,8 @@ resource "aws_route" "sml-r" {
   destination_cidr_block = "0.0.0.0/0"
   gateway_id             = aws_internet_gateway.sml-igw.id
 }
+# route table - subnet association
+resource "aws_route_table_association" "sml-subnet-association" {
+  subnet_id      = aws_subnet.sml-subnet.id
+  route_table_id = aws_route_table.sml-rt.id
+}
