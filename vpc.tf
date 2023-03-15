@@ -27,3 +27,12 @@ resource "aws_internet_gateway" "sml-igw" {
     Name = "sml-igw"
   }
 }
+
+# route table
+
+resource "aws_route_table" "sml-rt" {
+  vpc_id = aws_vpc.sml.id
+  tags = {
+    Name = "sml-rt"
+  }
+}
