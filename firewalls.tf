@@ -33,3 +33,13 @@ resource "aws_network_acl_association" "sml-nacl-subnet" {
   network_acl_id = aws_network_acl.sml-nacl.id
   subnet_id      = aws_subnet.sml-subnet.id
 }
+#security group 
+resource "aws_security_group" "sml-sg" {
+  name        = "allow-ssh-http"
+  description = "Allow ssh and http inbound traffic"
+  vpc_id      = aws_vpc.sml.id
+
+  tags = {
+    Name = "sml-sg"
+  }
+}
