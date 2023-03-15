@@ -36,3 +36,10 @@ resource "aws_route_table" "sml-rt" {
     Name = "sml-rt"
   }
 }
+
+# route for internet gateway
+resource "aws_route" "sml-r" {
+  route_table_id         = aws_route_table.sml-rt.id
+  destination_cidr_block = "0.0.0.0/0"
+  gateway_id             = aws_internet_gateway.sml-igw.id
+}
