@@ -28,3 +28,8 @@ resource "aws_network_acl_rule" "sml-egress" {
   from_port      = 0
   to_port        = 65535
 }
+# NACL subnet association
+resource "aws_network_acl_association" "sml-nacl-subnet" {
+  network_acl_id = aws_network_acl.sml-nacl.id
+  subnet_id      = aws_subnet.sml-subnet.id
+}
