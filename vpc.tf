@@ -18,3 +18,12 @@ resource "aws_subnet" "sml-subnet" {
     Name = "sml-subnet"
   }
 }
+
+# internet gateway
+resource "aws_internet_gateway" "sml-igw" {
+  vpc_id = aws_vpc.sml.id
+
+  tags = {
+    Name = "sml-igw"
+  }
+}
